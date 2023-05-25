@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2023 청운 모의주식</title>
+    <style>
+        @media screen and (min-width: 769px) {            
+            body{
+                background-color: #071982;
+                user-select: none;
+            }
+            h1{
+                margin: auto;
+                margin-top: 20px;
+                color: white;
+                font-size: 45px;
+            }
+            ul{
+                list-style-type: none;
+                display: inline-block;
+                padding: 0;
+                margin: 0;
+                text-align: center;
+            }
+            li{
+                float: left;
+            }
+            div > img{
+                width: 1300px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            div{
+                margin-top: 2.5vw;
+            }
+            #slideShow{
+                width: 1300px;
+                height: 90vh;
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                overflow: hidden;
+            }
+            .slides{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 2000vw;
+                transition: left 0.5s ease-out; 
+            }
+            .slides li:first-child{
+                margin-left: 0;
+            }
+            .slides li:not(:last-child){
+                float: left;
+                margin-right: 0;
+            }
+            .slides li{
+                float: left;
+            }
+            .slides > li > img{
+                max-width: 100%;
+                height: auto;      
+                
+            }
+            .controller span{
+                position: absolute;
+                color: white;
+                text-align: center;
+                padding: 10px 20px;
+                top: 45%;
+                font-size: 5.0em;
+                cursor: pointer;
+            }
+            .prev{
+                left: 10px;
+            }
+            .next{
+                right: 10px;
+            }
+            .btn{
+          padding: 15px 100px;
+          margin:10px 4px;
+          color: #fff;
+          font-family: sans-serif;
+          text-transform: uppercase;
+          text-align: center;
+          position: relative;
+          text-decoration: none;
+          display:inline-block;          
+        }
+        .btn{
+          top: 40px;
+          font-family: "proxima-nova", sans-serif;
+          font-weight: 500;
+          font-size: 30px;
+          text-transform: uppercase!important;
+          letter-spacing: 2px;
+          color: #fff;
+          cursor: hand;
+          text-align: center;
+          text-transform: capitalize;
+          border: 1px solid #fff;
+          border-radius:50px;
+          position: relative;
+          overflow: hidden!important;
+          -webkit-transition: all .3s ease-in-out;
+          -moz-transition: all .3s ease-in-out;
+          -o-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out;
+          background: transparent!important;            
+          z-index:10;            
+        }
+        .btn:hover{
+          border: 1px solid #071982;
+          color: #80ffd3!important;
+        }
+        .btn::before {
+          content: '';
+          width: 0%;
+          height: 100%;
+          display: block;
+          background: #071982;
+          position: absolute;
+          -ms-transform: skewX(-20deg);
+          -webkit-transform: skewX(-20deg); 
+          transform: skewX(-20deg);   
+          left: -10%;
+          opacity: 1;
+          top: 0;
+          z-index: -12;
+          -moz-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+          -o-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+          -webkit-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+          transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+          box-shadow:2px 0px 14px rgba(0,0,0,.6);
+        } 
+        .btn::after {
+          content: '';
+          width: 0%;
+          height: 100%;
+          display: block;
+          background: #80ffd3;
+          position: absolute;
+          -ms-transform: skewX(-20deg);
+          -webkit-transform: skewX(-20deg); 
+          transform: skewX(-20deg);   
+          left: -10%;
+          opacity: 0;
+          top: 0;
+          z-index: -15;
+          -webkit-transition: all .94s cubic-bezier(.2,.95,.57,.99);
+          -moz-transition: all .4s cubic-bezier(.2,.95,.57,.99);
+          -o-transition: all .4s cubic-bezier(.2,.95,.57,.99);
+          transition: all .4s cubic-bezier(.2,.95,.57,.99);
+          box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+        }
+        .btn:hover::before, .btn:hover::before{
+          opacity:1;
+          width: 116%;
+        }
+        .btn:hover::after, .btn:hover::after{
+          opacity:1;
+          width: 120%;
+        }
+        }
+        @media screen and (max-width: 769px) {            
+            body{
+                background-color: #071982;
+                user-select: none;
+            }
+            h1{
+                margin: auto;
+                margin-top: 20px;
+                color: white;
+                font-size: 45px;
+            }
+            ul{
+                list-style-type: none;
+                display: inline-block;
+                padding: 0;
+                margin: 0;
+                text-align: center;
+            }
+            li{
+                float: left;
+            }
+            div > img{
+                width: 1300px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            div{
+                margin-top: 18vw;
+            }
+            #slideShow{
+                width: 1300px;
+                height: 90vh;
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                overflow: hidden;
+            }
+            .slides{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 2000vw;
+                transition: left 0.5s ease-out; 
+            }
+            .slides li:first-child{
+                margin-left: 0;
+            }
+            .slides li:not(:last-child){
+                float: left;
+                margin-right: 0;
+            }
+            .slides li{
+                float: left;
+            }
+            .slides > li > img{        
+                max-width: 100%;
+                height: auto;
+                
+            }
+            .controller span{
+                position:absolute;
+                color: white;
+                text-align: center;
+                padding: 10px 20px;
+                top: 45%;
+                font-size: 5.0em;
+                cursor: pointer;
+            }
+            .prev{
+                left: 35px;
+            }
+            .next{
+                right: 35px;
+            }
+            .btn{
+            padding: 15px 100px;
+            margin:10px 4px;
+            color: #fff;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            text-decoration: none;
+            display:inline-block;          
+            }
+            .btn{
+            top: 40px;
+            font-family: "proxima-nova", sans-serif;
+            font-weight: 500;
+            font-size: 30px;
+            text-transform: uppercase!important;
+            letter-spacing: 2px;
+            color: #fff;
+            cursor: hand;
+            text-align: center;
+            text-transform: capitalize;
+            border: 1px solid #fff;
+            border-radius:50px;
+            position: relative;
+            overflow: hidden!important;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+            background: transparent!important;            
+            z-index:10;            
+            }
+            .btn:hover{
+            border: 1px solid #071982;
+            color: #80ffd3!important;
+            }
+            .btn::before {
+            content: '';
+            width: 0%;
+            height: 100%;
+            display: block;
+            background: #071982;
+            position: absolute;
+            -ms-transform: skewX(-20deg);
+            -webkit-transform: skewX(-20deg); 
+            transform: skewX(-20deg);   
+            left: -10%;
+            opacity: 1;
+            top: 0;
+            z-index: -12;
+            -moz-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+            -o-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+            -webkit-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow:2px 0px 14px rgba(0,0,0,.6);
+            } 
+            .btn::after {
+            content: '';
+            width: 0%;
+            height: 100%;
+            display: block;
+            background: #80ffd3;
+            position: absolute;
+            -ms-transform: skewX(-20deg);
+            -webkit-transform: skewX(-20deg); 
+            transform: skewX(-20deg);   
+            left: -10%;
+            opacity: 0;
+            top: 0;
+            z-index: -15;
+            -webkit-transition: all .94s cubic-bezier(.2,.95,.57,.99);
+            -moz-transition: all .4s cubic-bezier(.2,.95,.57,.99);
+            -o-transition: all .4s cubic-bezier(.2,.95,.57,.99);
+            transition: all .4s cubic-bezier(.2,.95,.57,.99);
+            box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+            }
+            .btn:hover::before, .btn:hover::before{
+            opacity:1;
+            width: 116%;
+            }
+            .btn:hover::after, .btn:hover::after{
+            opacity:1;
+            width: 120%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>2023 청운 모의 주식 투자</h1>
+    <div id = "slideShow">
+        <ul class = "slides">
+            <li><a href="https://news.naver.com/"><img src="C:\Users\windows\Downloads\주식(8).jpg"></a></li>
+            <li><a href="https://naver.com/"><img src="C:\Users\windows\Downloads\주식(6).jpg"></a></li>
+            <li><a href="https://sports.news.naver.com/kbaseball/record/index?category=kbo"><img src="C:\Users\windows\Downloads\주식(3) (1) (1).jpg"></a></li>   
+        </ul>
+    </div>
+    <p class="controller">
+      <span class="prev" id="left">&lang;</span>  
+      <span class="next" id="right">&rang;</span>
+    </p>
+</body>
+<script>
+    const slides = document.querySelector('.slides');
+    const slideImg = document.querySelectorAll('.slides li');
+    let currentIdx = 0;
+    const slideCount = slideImg.length;
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    const slideWidth = 1300;
+    const slideMargin = 0;
+
+    slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
+
+    function moveSlide(num) {
+    slides.style.left = -num * 1300 + 'px';
+    currentIdx = num;
+    }
+
+    prev.addEventListener('click', function () {
+    if (currentIdx !== 0) moveSlide(currentIdx - 1);
+    });
+
+    next.addEventListener('click', function () {
+    if (currentIdx !== slideCount - 1) {
+        moveSlide(currentIdx + 1);
+    }
+    });
+</script>
+</html>
